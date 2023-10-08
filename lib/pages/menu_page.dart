@@ -13,15 +13,6 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  // food menu
-  List<Food> foodMenu = [
-    // pizza
-    Food(name: 'Pizza', price: '5,00', imagePath: 'assets/images/food_icons/pizza.png', rating: '5'),
-    Food(name: 'Lasagne', price: '6,99', imagePath: 'assets/images/food_icons/lasagne.png', rating: '4'),
-    Food(name: 'Spaghetti', price: '3.99', imagePath: 'assets/images/food_icons/spaghetti.png', rating: '5'),
-    Food(name: 'Tiramisu', price: '6.00', imagePath: 'assets/images/food_icons/tiramisu.png', rating: '3')
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +68,7 @@ class _MenuPageState extends State<MenuPage> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     var item = items[index].data();
-                    Food foodItem = Food(name: item['name'], price: item['price'].toString(), rating: item['rating'].toString());
+                    Food foodItem = Food(name: item['name'], price: item['price'], rating: item['rating'].toString());
                     return FoodTile(
                       food: foodItem,
                       onTap: () => navigateToFoodDetails(foodItem)

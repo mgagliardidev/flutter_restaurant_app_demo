@@ -1,6 +1,6 @@
 class Food {
   String name;
-  String price;
+  num price;
   String imagePath;
   String rating;
 
