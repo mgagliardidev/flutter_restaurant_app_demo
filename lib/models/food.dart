@@ -4,6 +4,8 @@ class Food {
   String imagePath;
   String rating;
 
+  // TODO: implement price to string formatting 
+
   Food ({
     required this.name,
     required this.price,

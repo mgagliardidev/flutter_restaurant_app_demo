@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../components/add_sub_btn.dart';
 import '../models/food.dart';
+import '../models/shop.dart';
 
 class FoodDetails extends StatefulWidget {
   final Food food;
@@ -17,10 +19,10 @@ class FoodDetails extends StatefulWidget {
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
-  num foodCounter = 0;
+  int foodCounter = 0;
   num totalPrice = 0;
 
-  void updateFoodCounterAndPrice(num value) {
+  void updateFoodCounterAndPrice(int value) {
     
     if (foodCounter == 0 && value < 0) {
       return;
@@ -30,6 +32,31 @@ class _FoodDetailsState extends State<FoodDetails> {
       foodCounter += value;
       totalPrice = num.parse((foodCounter * widget.food.price).toStringAsFixed(2));
     });
+  }
+
+  void addToCart() {
+    final shop = context.read<Shop>();
+
+    shop.addToCart(widget.food, foodCounter);
+
+    showDialog(
+      context: context, 
+      barrierDismissible: false, // cannot pop out by clicking outside
+      builder: (context) => AlertDialog(
+        content: const Text('Succesfully added to Cart'),
+        actions: [
+          // okay
+          IconButton(
+            onPressed: () {
+              // pop twice to return to previous screen
+              Navigator.pop(context);
+              Navigator.pop(context);
+            }, 
+            icon: const Icon(Icons.done)
+          )
+        ],
+      )
+    );
   }
 
   @override
@@ -128,11 +155,15 @@ class _FoodDetailsState extends State<FoodDetails> {
                           const SizedBox(width: 10),
                           
                           // price
-                          Text(
-                            '$totalPrice\$',
-                            style: const TextStyle(
-                              fontSize: 23,
-                              color: Colors.white
+                          Container(
+                            width: 90,
+                            alignment: Alignment.center,
+                            child: Text(
+                              '$totalPrice\$',
+                              style: const TextStyle(
+                                fontSize: 23,
+                                color: Colors.white
+                              ),
                             ),
                           ),
                                 
@@ -160,7 +191,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     
                     // add to cart btn
                     ElevatedButton(
-                      onPressed: (foodCounter > 0) ? (){} : null,
+                      onPressed: (foodCounter > 0) ? addToCart : null,
                         style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(12),

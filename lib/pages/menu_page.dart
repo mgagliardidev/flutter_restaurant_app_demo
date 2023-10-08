@@ -4,6 +4,7 @@ import '../models/food.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'food_details_page.dart';
+import 'cart_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -13,6 +14,7 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +24,18 @@ class _MenuPageState extends State<MenuPage> {
           Icons.menu,
           color: Colors.black87
         ),
+        actions: [
+          // cart btn
+          IconButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+            }, 
+            icon: Icon(Icons.shopping_cart_sharp),
+            color: Colors.black,
+          )
+        ],
         title: const Text(
-          'MAMMA MIA! Restaurant',
+          'MAMMA MIA!',
           style: TextStyle(
             fontFamily: 'Raleway',
             fontSize: 24,

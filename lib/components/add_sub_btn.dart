@@ -24,7 +24,7 @@ class AddSubBtn extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(12),
-        backgroundColor: Color.fromARGB(120, 215, 218, 223), // <-- Button color
+        backgroundColor: const Color.fromARGB(120, 215, 218, 223), // <-- Button color
         foregroundColor: Colors.red, // <-- Splash color
       ),
       child: Icon(
