@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/models/food.dart';
+import 'package:restaurant_app/utils/constants.dart';
 
 import '../models/shop.dart';
 
@@ -19,7 +20,7 @@ class CartPage extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.transparent,
+          backgroundColor: appBarBackgroundColor,
           foregroundColor: Colors.black,
           elevation: 0,
         ),
@@ -59,7 +60,7 @@ class CartPage extends StatelessWidget {
           Container(
             width: 250,
             height: 60,
-            margin: EdgeInsets.only(bottom: 40),
+            margin: const EdgeInsets.only(bottom: 40),
             child: FloatingActionButton.extended(  
               label: const Text(
                 'Pay Now',
@@ -68,7 +69,7 @@ class CartPage extends StatelessWidget {
                   color: Colors.white
                 ),  
               ),  
-              backgroundColor: const Color.fromARGB(255, 128, 53, 53), // <-- Button color
+              backgroundColor: floatingColor, // <-- Button color
               foregroundColor: Colors.red, // <-- Splash color
               onPressed: (){},  
             ),

@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'food_details_page.dart';
 import 'cart_page.dart';
 
+import '../utils/constants.dart';
+
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
 
@@ -18,11 +20,11 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: primaryBackgroundColor,
       appBar: AppBar(
         leading: const Icon(
           Icons.menu,
-          color: Colors.black87
+          color: appBarTitleColor
         ),
         actions: [
           // cart btn
@@ -30,8 +32,8 @@ class _MenuPageState extends State<MenuPage> {
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
             }, 
-            icon: Icon(Icons.shopping_cart_sharp),
-            color: Colors.black,
+            icon: const Icon(Icons.shopping_cart_sharp),
+            color: appBarTitleColor,
           )
         ],
         title: const Text(
@@ -40,11 +42,11 @@ class _MenuPageState extends State<MenuPage> {
             fontFamily: 'Raleway',
             fontSize: 24,
             fontWeight: FontWeight.w900,
-            color: Colors.black87
+            color: appBarTitleColor
           ),
         ),
         toolbarHeight: 120,
-        backgroundColor: Colors.grey[300],
+        backgroundColor: primaryBackgroundColor,
         elevation: 0,
       ),
       body: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:restaurant_app/utils/constants.dart';
 
 import '../components/add_sub_btn.dart';
 import '../models/food.dart';
@@ -64,7 +65,7 @@ class _FoodDetailsState extends State<FoodDetails> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        backgroundColor: Colors.transparent,
+        backgroundColor: appBarBackgroundColor,
         elevation: 0,
       ),
       body: Padding(
@@ -141,7 +142,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 128, 53, 53),
+                        color: floatingColor,
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.all(Radius.circular(150))
                       ),
@@ -195,9 +196,9 @@ class _FoodDetailsState extends State<FoodDetails> {
                         style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(12),
-                        backgroundColor: const Color.fromARGB(255, 128, 53, 53), // <-- Button color
+                        backgroundColor: floatingColor, // <-- Button color
                         foregroundColor: Colors.red, // <-- Splash color
-                        disabledBackgroundColor: const Color.fromARGB(150, 128, 53, 53) // <-- color when onPressed is null
+                        disabledBackgroundColor: floatingDisabledColor // <-- color when onPressed is null
                       ), 
                       child: 
                         const Icon(
