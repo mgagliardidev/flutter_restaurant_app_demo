@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/components/image_banner.dart';
 import '../components/food_tile.dart';
 import '../models/food.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -51,19 +52,8 @@ class _MenuPageState extends State<MenuPage> {
       ),
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60)
-            ),
-            width: 380,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/images/misc/promo_banner.jpg',
-                fit: BoxFit.cover,
-              )
-            ),
-          ),
+          
+          const ImageBanner(imagePath: 'assets/images/misc/promo_banner.jpg'),
 
           const SizedBox(height: 20),
 
@@ -91,7 +81,11 @@ class _MenuPageState extends State<MenuPage> {
                 );
               },
             ),
-          )
+          ),
+
+          const SizedBox(height: 20),
+
+          const ImageBanner(imagePath: 'assets/images/misc/deliver_banner.jpeg')
         ],
       ),
     );
