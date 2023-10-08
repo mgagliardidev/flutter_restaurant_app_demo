@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../components/food_tile.dart';
 import '../models/food.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:developer';
+
+import 'food_details_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -77,7 +78,10 @@ class _MenuPageState extends State<MenuPage> {
                   itemBuilder: (context, index) {
                     var item = items[index].data();
                     Food foodItem = Food(name: item['name'], price: item['price'].toString(), rating: item['rating'].toString());
-                    return FoodTile(food: foodItem);
+                    return FoodTile(
+                      food: foodItem,
+                      onTap: () => navigateToFoodDetails(foodItem)
+                    );
                   },
                 );
               },
@@ -86,5 +90,9 @@ class _MenuPageState extends State<MenuPage> {
         ],
       ),
     );
+  }
+  
+  void navigateToFoodDetails(Food food) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FoodDetails(food: food)));
   }
 }
